@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+const imagePath = (filename) => `${import.meta.env.BASE_URL}images/${filename}`;
+
 const pages = [
   { key: 'home', label: 'Home' },
   { key: 'builds', label: 'Our Builds' },
@@ -9,10 +11,10 @@ const pages = [
 ];
 
 const buildProjects = [
-  { title: 'Modern Farmhouse', image: '/images/house1.png', description: 'Crisp lines, warm natural textures, and welcoming family-first layouts for Indianapolis-area living.' },
-  { title: 'Modern Custom', image: '/images/house2.png', description: 'Clean architecture, expansive glass, and bold contemporary detailing tailored to urban and infill lots.' },
-  { title: 'Classic Farmhouse', image: '/images/house1.png', description: 'Timeless farmhouse character with updated finishes, functional flow, and durable everyday comfort.' },
-  { title: 'Barndominium-Inspired', image: '/images/barndominium-inspired.png', description: 'Open-plan living, strong rooflines, and practical luxury shaped for clients who want something distinctive.' }
+  { title: 'Modern Farmhouse', image: imagePath('house1.png'), description: 'Crisp lines, warm natural textures, and welcoming family-first layouts for Indianapolis-area living.' },
+  { title: 'Modern Custom', image: imagePath('house2.png'), description: 'Clean architecture, expansive glass, and bold contemporary detailing tailored to urban and infill lots.' },
+  { title: 'Classic Farmhouse', image: imagePath('house1.png'), description: 'Timeless farmhouse character with updated finishes, functional flow, and durable everyday comfort.' },
+  { title: 'Barndominium-Inspired', image: imagePath('barndominium-inspired.png'), description: 'Open-plan living, strong rooflines, and practical luxury shaped for clients who want something distinctive.' }
 ];
 
 const testimonials = [
@@ -137,7 +139,7 @@ function App() {
                 <p className="approach-kicker">Clear communication. Strong design direction. A process that feels composed from the first meeting to the final detail.</p>
               </div>
               <div className="approach-hero-image">
-                <img src="/images/house1.png" alt="Modern farmhouse exterior in warm light" loading="lazy" className="parallax-img" />
+                <img src={imagePath('house1.png')} alt="Modern farmhouse exterior in warm light" loading="lazy" className="parallax-img" />
               </div>
             </section>
 
@@ -247,7 +249,7 @@ function App() {
     return (
       <>
         <section className="hero hero-animated">
-          <div className="hero-bg" style={{ backgroundImage: "url('/images/hero1.png')" }}></div>
+          <div className="hero-bg" style={{ backgroundImage: `url('${imagePath('hero1.png')}')` }}></div>
           <div className="hero-orb hero-orb-one"></div>
           <div className="hero-orb hero-orb-two"></div>
           <div className="hero-grid-lines"></div>
