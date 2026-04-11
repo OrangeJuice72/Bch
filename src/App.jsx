@@ -64,6 +64,42 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 992) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = previousOverflow;
+    }
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -297,7 +333,11 @@ function App() {
             <span>CUSTOM HOMES</span>
           </a>
 
-          <nav className={`desktop-nav ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+          <nav
+            id="mobile-navigation"
+            className={`desktop-nav ${mobileMenuOpen ? 'mobile-open' : ''}`}
+            aria-label="Primary navigation"
+          >
             <ul>
               <li><a href="#builds" className={activePage === 'builds' ? 'active' : ''} onClick={(event) => handleNavClick(event, 'builds')}>Our Builds</a></li>
               <li><a href="#approach" className={activePage === 'approach' ? 'active' : ''} onClick={(event) => handleNavClick(event, 'approach')}>Our Approach</a></li>
@@ -314,6 +354,7 @@ function App() {
             className="mobile-menu-btn"
             aria-label="Toggle Menu"
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setMobileMenuOpen((open) => !open)}
           >
             <span></span>
