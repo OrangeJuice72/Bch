@@ -376,15 +376,18 @@ h3 {
 }
 
 .hero-content {
-    position: relative;
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
     z-index: 1;
     max-width: 800px;
     width: min(100%, 800px);
     padding: 0 20px;
+    text-align: center;
 }
 
 .hero-animated {
-    justify-content: flex-start;
+    justify-content: center;
     padding: 0 5vw;
 }
 
@@ -393,14 +396,12 @@ h3 {
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 1.5rem;
-    padding: 0.7rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(12, 18, 27, 0.34);
-    backdrop-filter: blur(8px);
-    color: rgba(255, 255, 255, 0.9);
-    letter-spacing: 2px;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.84);
+    letter-spacing: 3px;
     text-transform: uppercase;
-    font-size: 0.72rem;
+    font-size: 0.74rem;
+    text-shadow: 0 10px 26px rgba(0, 0, 0, 0.38);
 }
 
 .hero-copy {
@@ -408,17 +409,23 @@ h3 {
     color: rgba(255, 255, 255, 0.82);
     font-size: 1.1rem;
     text-wrap: balance;
+    margin: 0 auto;
+    text-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
 }
 
 .hero-saying {
-    animation: heroSayingFade 0.55s ease;
+    animation: heroSayingFade 1.4s ease;
     text-wrap: balance;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 11ch;
+    text-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
 }
 
 .hero-actions {
     display: flex;
     gap: 1.5rem;
-    justify-content: flex-start;
+    justify-content: center;
     margin-top: var(--spacing-lg);
     flex-wrap: wrap;
 }
@@ -495,13 +502,16 @@ h3 {
 @media (max-width: 900px) {
     .hero {
         justify-content: center;
-        min-height: auto;
+        min-height: 100svh;
         padding-top: 7.5rem;
     }
     .hero-animated {
         justify-content: center;
         text-align: center;
         padding: 0 1.5rem;
+    }
+    .hero-content {
+        width: min(100%, 34rem);
     }
     .hero-actions {
         justify-content: center;
@@ -1181,8 +1191,8 @@ h3 {
     .hero {
         display: grid;
         grid-template-columns: 1fr;
-        align-content: start;
-        justify-items: stretch;
+        align-content: center;
+        justify-items: center;
         padding-top: 6.5rem;
         padding-bottom: 2rem;
     }
@@ -1192,7 +1202,18 @@ h3 {
         padding-right: 1rem;
     }
 
-    .hero-content,
+    .hero-content {
+        position: relative;
+        inset: auto;
+        transform: none;
+        width: 100%;
+        max-width: 22rem;
+        margin-left: auto;
+        margin-right: auto;
+        justify-self: center;
+        text-align: center;
+    }
+
     .hero-stats {
         width: 100%;
         max-width: none;
@@ -1307,11 +1328,13 @@ h3 {
 @keyframes heroSayingFade {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(18px);
+        filter: blur(6px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
+        filter: blur(0);
     }
 }
 

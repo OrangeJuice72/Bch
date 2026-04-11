@@ -34,8 +34,8 @@ const testimonials = [
 
 const heroSayings = [
   'Building More Than Your Dream Home',
-  'Luxury Homes With A Calm, Clear Process',
-  'Crafted For The Way Your Family Lives'
+  'Quiet Luxury, Thoughtfully Built',
+  'Custom Homes With Lasting Character'
 ];
 
 function getPageFromHash() {
@@ -137,7 +137,7 @@ function App() {
 
     const sayingInterval = window.setInterval(() => {
       setHeroSayingIndex((currentIndex) => (currentIndex + 1) % heroSayings.length);
-    }, 3200);
+    }, 6200);
 
     return () => window.clearInterval(sayingInterval);
   }, [activePage]);
