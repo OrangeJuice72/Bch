@@ -309,7 +309,6 @@ function App() {
           <div className="hero-orb hero-orb-two"></div>
           <div className="hero-grid-lines"></div>
           <div className="hero-content fade-in-up">
-            <p className="hero-badge fade-in-up">Indianapolis Custom Homes</p>
             <h2 className="h1-style hero-saying" key={heroSayings[heroSayingIndex]}>
               {heroSayings[heroSayingIndex]}
             </h2>
@@ -318,10 +317,6 @@ function App() {
               <a href="#builds" className="btn btn-primary" onClick={(event) => handleNavClick(event, 'builds')}>Explore Our Builds</a>
               <a href="#contact" className="btn btn-secondary" onClick={(event) => handleNavClick(event, 'contact')}>Start The Conversation</a>
             </div>
-          </div>
-          <div className="hero-stats fade-in-up">
-            <div><strong>25+</strong><span>years of custom home experience</span></div>
-            <div><strong>Indianapolis Based</strong><span>building in the city core and surrounding communities</span></div>
           </div>
         </section>
 
